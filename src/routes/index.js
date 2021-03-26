@@ -3,14 +3,14 @@ const router = express.Router()
 
 const asyncHandler = require('express-async-handler')
 
-const { getWelcome, getAllWelcomes, saveWelcome, deleteWelcome } = require('../controllers/hello')
+const { getMessagesByMeetingId, getAllMessages, saveMessage, deleteMessage } = require('../controllers/messages')
 
-router.get('/', asyncHandler(getAllWelcomes))
+router.get('/', asyncHandler(getAllMessages))
 
-router.get('/:dataId', asyncHandler(getWelcome))
+router.get('/:meetingId', asyncHandler(getMessagesByMeetingId))
 
-router.post('/:dataId?', asyncHandler(saveWelcome))
+router.post('/', asyncHandler(saveMessage))
 
-router.delete('/:dataId', asyncHandler(deleteWelcome))
+router.delete('/:dataId', asyncHandler(deleteMessage))
 
 module.exports = router
